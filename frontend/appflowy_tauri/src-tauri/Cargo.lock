@@ -140,7 +140,7 @@ checksum = "a4668cab20f66d8d020e1fbc0ebe47217433c1b6c8f2040faf858554e394ace6"
 [[package]]
 name = "appflowy-integrate"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "anyhow",
  "collab",
@@ -149,7 +149,8 @@ dependencies = [
  "collab-folder",
  "collab-persistence",
  "collab-plugins",
- "parking_lot 0.12.1",
+ "futures",
+ "parking_lot",
  "serde",
  "serde_json",
  "tracing",
@@ -728,12 +729,13 @@ dependencies = [
 [[package]]
 name = "collab"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "anyhow",
+ "async-trait",
  "bytes",
  "lib0",
- "parking_lot 0.12.1",
+ "parking_lot",
  "serde",
  "serde_json",
  "thiserror",
@@ -744,27 +746,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "collab-client-ws"
-version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
-dependencies = [
- "bytes",
- "collab-sync",
- "futures-util",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
- "tokio-retry",
- "tokio-stream",
- "tokio-tungstenite",
- "tracing",
-]
-
-[[package]]
 name = "collab-database"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -777,7 +761,7 @@ dependencies = [
  "lazy_static",
  "lru",
  "nanoid",
- "parking_lot 0.12.1",
+ "parking_lot",
  "serde",
  "serde_json",
  "serde_repr",
@@ -793,7 +777,7 @@ dependencies = [
 [[package]]
 name = "collab-define"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "anyhow",
  "collab",
@@ -805,7 +789,7 @@ dependencies = [
 [[package]]
 name = "collab-derive"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -817,14 +801,15 @@ dependencies = [
 [[package]]
 name = "collab-document"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "anyhow",
  "collab",
  "collab-derive",
  "collab-persistence",
+ "lib0",
  "nanoid",
- "parking_lot 0.12.1",
+ "parking_lot",
  "serde",
  "serde_json",
  "thiserror",
@@ -836,14 +821,14 @@ dependencies = [
 [[package]]
 name = "collab-folder"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "anyhow",
  "chrono",
  "collab",
  "collab-derive",
  "collab-persistence",
- "parking_lot 0.12.1",
+ "parking_lot",
  "serde",
  "serde_json",
  "serde_repr",
@@ -856,16 +841,17 @@ dependencies = [
 [[package]]
 name = "collab-persistence"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
+ "async-trait",
  "bincode",
  "chrono",
+ "collab",
  "lazy_static",
  "lib0",
- "parking_lot 0.12.1",
+ "parking_lot",
  "rocksdb",
  "serde",
- "sled",
  "smallvec",
  "thiserror",
  "tokio",
@@ -876,17 +862,17 @@ dependencies = [
 [[package]]
 name = "collab-plugins"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "anyhow",
  "async-trait",
  "collab",
- "collab-client-ws",
  "collab-define",
  "collab-persistence",
  "collab-sync",
+ "collab-ws",
  "futures-util",
- "parking_lot 0.12.1",
+ "parking_lot",
  "rand 0.8.5",
  "serde",
  "serde_json",
@@ -904,14 +890,14 @@ dependencies = [
 [[package]]
 name = "collab-sync"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "bytes",
  "collab",
  "futures-util",
  "lib0",
  "md5",
- "parking_lot 0.12.1",
+ "parking_lot",
  "serde",
  "serde_json",
  "thiserror",
@@ -926,16 +912,34 @@ dependencies = [
 [[package]]
 name = "collab-user"
 version = "0.1.0"
-source = "git+https://github.com/AppFlowy-IO/AppFlowy-Collab?rev=223011#223011a4340d0d98e7e10ca6bb19b8d622b0f568"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
 dependencies = [
  "anyhow",
  "collab",
  "collab-define",
- "parking_lot 0.12.1",
+ "parking_lot",
  "serde",
  "serde_json",
  "tokio",
  "tokio-stream",
+ "tracing",
+]
+
+[[package]]
+name = "collab-ws"
+version = "0.1.0"
+source = "git+https://github.com/qinluhe/AppFlowy-Collab?rev=4945564e6f436e86eac438b8acac5b51f25ed7de#4945564e6f436e86eac438b8acac5b51f25ed7de"
+dependencies = [
+ "bytes",
+ "collab-sync",
+ "futures-util",
+ "serde",
+ "serde_json",
+ "thiserror",
+ "tokio",
+ "tokio-retry",
+ "tokio-stream",
+ "tokio-tungstenite",
  "tracing",
 ]
 
@@ -1212,7 +1216,7 @@ dependencies = [
  "hashbrown 0.12.3",
  "lock_api",
  "once_cell",
- "parking_lot_core 0.9.8",
+ "parking_lot_core",
 ]
 
 [[package]]
@@ -1580,7 +1584,7 @@ dependencies = [
  "lib-dispatch",
  "lib-infra",
  "lib-log",
- "parking_lot 0.12.1",
+ "parking_lot",
  "serde",
  "serde_json",
  "serde_repr",
@@ -1627,7 +1631,7 @@ dependencies = [
  "lib-dispatch",
  "lib-infra",
  "nanoid",
- "parking_lot 0.12.1",
+ "parking_lot",
  "protobuf",
  "rayon",
  "rust_decimal",
@@ -1687,7 +1691,7 @@ dependencies = [
  "lib-dispatch",
  "lib-infra",
  "nanoid",
- "parking_lot 0.12.1",
+ "parking_lot",
  "protobuf",
  "serde",
  "serde_json",
@@ -1763,7 +1767,7 @@ dependencies = [
  "lib-dispatch",
  "lib-infra",
  "nanoid",
- "parking_lot 0.12.1",
+ "parking_lot",
  "protobuf",
  "strum_macros 0.21.1",
  "tokio",
@@ -1824,7 +1828,7 @@ dependencies = [
  "lazy_static",
  "lib-infra",
  "mime_guess",
- "parking_lot 0.12.1",
+ "parking_lot",
  "postgrest",
  "reqwest",
  "serde",
@@ -1858,7 +1862,7 @@ dependencies = [
  "error-chain",
  "lazy_static",
  "libsqlite3-sys",
- "parking_lot 0.12.1",
+ "parking_lot",
  "r2d2",
  "scheduled-thread-pool",
  "serde",
@@ -1923,7 +1927,7 @@ dependencies = [
  "lib-infra",
  "log",
  "once_cell",
- "parking_lot 0.12.1",
+ "parking_lot",
  "protobuf",
  "serde",
  "serde_json",
@@ -1980,16 +1984,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a62bc1cf6f830c2ec14a513a9fb124d0a213a629668a4186f329db21fe045652"
 dependencies = [
  "percent-encoding",
-]
-
-[[package]]
-name = "fs2"
-version = "0.4.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9564fc758e15025b46aa6643b1b77d047d1a56a1aea6e01002ac0c7026876213"
-dependencies = [
- "libc",
- "winapi",
 ]
 
 [[package]]
@@ -3570,37 +3564,12 @@ dependencies = [
 
 [[package]]
 name = "parking_lot"
-version = "0.11.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7d17b78036a60663b797adeaee46f5c9dfebb86948d1255007a1d6be0271ff99"
-dependencies = [
- "instant",
- "lock_api",
- "parking_lot_core 0.8.6",
-]
-
-[[package]]
-name = "parking_lot"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3742b2c103b9f06bc9fff0a37ff4912935851bee6d36f3c02bcc755bcfec228f"
 dependencies = [
  "lock_api",
- "parking_lot_core 0.9.8",
-]
-
-[[package]]
-name = "parking_lot_core"
-version = "0.8.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "60a2cfe6f0ad2bfc16aefa463b497d5c7a5ecd44a23efa72aa342d90177356dc"
-dependencies = [
- "cfg-if",
- "instant",
- "libc",
- "redox_syscall 0.2.16",
- "smallvec",
- "winapi",
+ "parking_lot_core",
 ]
 
 [[package]]
@@ -4171,7 +4140,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "51de85fb3fb6524929c8a2eb85e6b6d363de4e8c48f9e2c2eac4944abc181c93"
 dependencies = [
  "log",
- "parking_lot 0.12.1",
+ "parking_lot",
  "scheduled-thread-pool",
 ]
 
@@ -4610,7 +4579,7 @@ version = "0.2.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3cbc66816425a074528352f5789333ecff06ca41b36b0b0efdfbb29edc391a19"
 dependencies = [
- "parking_lot 0.12.1",
+ "parking_lot",
 ]
 
 [[package]]
@@ -4919,22 +4888,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "sled"
-version = "0.34.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7f96b4737c2ce5987354855aed3797279def4ebf734436c6aa4552cf8e169935"
-dependencies = [
- "crc32fast",
- "crossbeam-epoch",
- "crossbeam-utils",
- "fs2",
- "fxhash",
- "libc",
- "log",
- "parking_lot 0.11.2",
-]
-
-[[package]]
 name = "slug"
 version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5041,7 +4994,7 @@ checksum = "f91138e76242f575eb1d3b38b4f1362f10d3a43f47d182a5b359af488a02293b"
 dependencies = [
  "new_debug_unreachable",
  "once_cell",
- "parking_lot 0.12.1",
+ "parking_lot",
  "phf_shared 0.10.0",
  "precomputed-hash",
  "serde",
@@ -5194,7 +5147,7 @@ dependencies = [
  "ndk-sys",
  "objc",
  "once_cell",
- "parking_lot 0.12.1",
+ "parking_lot",
  "png",
  "raw-window-handle",
  "scopeguard",
@@ -5593,7 +5546,7 @@ dependencies = [
  "libc",
  "mio",
  "num_cpus",
- "parking_lot 0.12.1",
+ "parking_lot",
  "pin-project-lite",
  "signal-hook-registry",
  "socket2 0.4.9",
@@ -5635,7 +5588,7 @@ dependencies = [
  "futures-channel",
  "futures-util",
  "log",
- "parking_lot 0.12.1",
+ "parking_lot",
  "percent-encoding",
  "phf 0.11.2",
  "pin-project-lite",
